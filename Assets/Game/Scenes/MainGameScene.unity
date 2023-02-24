@@ -606,7 +606,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 409049476}
-  - component: {fileID: 409049477}
   m_Layer: 0
   m_Name: CameraRoot
   m_TagString: Untagged
@@ -630,19 +629,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &409049477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 409049475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36148726f8699b4468c624ad9bfb6bdb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraRootTransform: {fileID: 409049476}
 --- !u!4 &441623444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4128271543816459077, guid: 1d75c9edce3a381419294210a888d80f, type: 3}
@@ -922,6 +908,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -995,6 +982,19 @@ Transform:
   m_Father: {fileID: 409049476}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36148726f8699b4468c624ad9bfb6bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraRootTransform: {fileID: 409049476}
 --- !u!1001 &976261496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1550,7 +1550,7 @@ PrefabInstance:
     - target: {fileID: 7768589258932986864, guid: 89791126b19bed342bf5df3c4f7877ba, type: 3}
       propertyPath: <CameraController>k__BackingField
       value: 
-      objectReference: {fileID: 409049477}
+      objectReference: {fileID: 0}
     - target: {fileID: 7768589258932986867, guid: 89791126b19bed342bf5df3c4f7877ba, type: 3}
       propertyPath: sceneId
       value: 638862406
