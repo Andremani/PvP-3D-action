@@ -11,10 +11,17 @@ namespace Andremani.Pvp3DAction
         private PlayerInput input;
         private Transform player;
 
+        private void Awake()
+        {
+            enabled = false;
+        }
+
         public void Init(PlayerInput playerInput, Transform playerTransform)
         {
             input = playerInput;
             player = playerTransform;
+
+            enabled = true;
         }
 
         private void LateUpdate()

@@ -13,9 +13,16 @@ namespace Andremani.Pvp3DAction
 
         private PlayerInput input;
 
+        private void Awake()
+        {
+            enabled = false;
+        }
+
         public void Init(PlayerInput playerInput)
         {
             input = playerInput;
+
+            enabled = true;
         }
 
         private void Update()
