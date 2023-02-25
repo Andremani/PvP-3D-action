@@ -14,6 +14,7 @@ namespace Andremani.Pvp3DAction
         private void Awake()
         {
             enabled = false;
+            CustomNetworkManager.OnClientDisconnectEvent += OnDisconnectedFromServer;
         }
 
         public void Init(PlayerInput playerInput, Transform playerTransform)
@@ -28,6 +29,11 @@ namespace Andremani.Pvp3DAction
         {
             cameraRootTransform.position = player.position;
             cameraRootTransform.rotation = Quaternion.Euler(input.MouseYRotationAngle, input.MouseXRotationAngle, 0);
+        }
+
+        private void OnDisconnectedFromServer()
+        {
+            enabled = false;
         }
     }
 }
