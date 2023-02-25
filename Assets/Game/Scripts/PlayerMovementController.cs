@@ -10,8 +10,13 @@ namespace Andremani.Pvp3DAction
         [SerializeField] private Rigidbody playerRigidbody;
         [Space]
         [SerializeField] private float speed = 1f;
+        [SerializeField] private float dashSpeed = 50f;
+        [SerializeField] private float dashDistance = 5f;
+        [SerializeField] private float dashCooldown = 2f;
+        [SerializeField] private DashMode dashMode;
 
         private PlayerInput input;
+        private bool isDashReloading;
 
         private void Awake()
         {
@@ -25,6 +30,22 @@ namespace Andremani.Pvp3DAction
             enabled = true;
         }
 
+        private void OnEnable()
+        {
+            if(input != null)
+            {
+                input.LMBClick += Dash;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (input != null)
+            {
+                input.LMBClick -= Dash;
+            }
+        }
+
         private void Update()
         {
             playerOrientationTransform.rotation = Quaternion.Euler(0, input.MouseXRotationAngle, 0);
@@ -34,6 +55,55 @@ namespace Andremani.Pvp3DAction
         {
             Vector3 moveVector = playerOrientationTransform.TransformDirection(input.MovementInput) * speed;
             playerRigidbody.velocity = new Vector3(moveVector.x, playerRigidbody.velocity.y, moveVector.z);
+        }
+
+        private void Dash()
+        {
+            if(!isDashReloading)
+            {
+                StartCoroutine(DashRoutine());
+            }
+        }
+
+        private IEnumerator DashRoutine()
+        {
+            Vector3 moveVector;
+            switch(dashMode)
+            {
+                case DashMode.TowardsCurrentMovement:
+                    {
+                        Vector3 direction = input.MovementInput.normalized;
+                        if (direction == Vector3.zero)
+                        {
+                            yield break;
+                        }
+                        moveVector = playerOrientationTransform.TransformDirection(direction) * dashSpeed;
+                    };
+                    break;
+                case DashMode.TowardsForwardOrientation:
+                    {
+                        moveVector = playerOrientationTransform.forward * dashSpeed;
+                    }
+                    break;
+                default:
+                    {
+                        goto case DashMode.TowardsForwardOrientation;
+                    }
+            }
+            playerRigidbody.velocity = new Vector3(moveVector.x, playerRigidbody.velocity.y, moveVector.z);
+            enabled = false;
+            input.isMouseXRotationLocked = true;
+
+            float dashTime = dashDistance / dashSpeed;
+            yield return new WaitForSeconds(dashTime);
+
+            enabled = true;
+            input.isMouseXRotationLocked = false;
+            isDashReloading = true;
+
+            yield return new WaitForSeconds(dashCooldown);
+
+            isDashReloading = false;
         }
     }
 }

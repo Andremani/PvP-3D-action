@@ -385,6 +385,7 @@ MonoBehaviour:
   minYRotationAngle: 0
   maxYRotationAngle: 50
   <MouseSensitivity>k__BackingField: 1
+  isCharacterRotationXLocked: 0
 --- !u!114 &7768589258932986878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,6 +401,10 @@ MonoBehaviour:
   playerOrientationTransform: {fileID: 7768589257657298857}
   playerRigidbody: {fileID: 7768589258932986879}
   speed: 8
+  dashSpeed: 50
+  dashDistance: 10
+  dashCooldown: 0.1
+  dashMode: 1
 --- !u!114 &7768589258932986867
 MonoBehaviour:
   m_ObjectHideFlags: 0

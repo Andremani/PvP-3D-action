@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Andremani.Pvp3DAction
 {
@@ -10,10 +11,13 @@ namespace Andremani.Pvp3DAction
         [SerializeField] private float maxYRotationAngle;
         [field: Space]
         [field: SerializeField] public float MouseSensitivity { get; private set; } = 1f;
+        [HideInInspector] public bool isMouseXRotationLocked = false;
         public Vector3 MovementInput { get; private set; }
 
         public float MouseXRotationAngle { get; private set; }
         public float MouseYRotationAngle { get; private set; }
+
+        public event Action LMBClick;
 
         private void Start()
         {
@@ -29,9 +33,17 @@ namespace Andremani.Pvp3DAction
 
         private void ScanMouseInput()
         {
-            MouseXRotationAngle += Input.GetAxis("Mouse X") * MouseSensitivity;
+            if (!isMouseXRotationLocked)
+            {
+                MouseXRotationAngle += Input.GetAxis("Mouse X") * MouseSensitivity;
+            }
             MouseYRotationAngle -= Input.GetAxis("Mouse Y") * MouseSensitivity;
             MouseYRotationAngle = Mathf.Clamp(MouseYRotationAngle, minYRotationAngle, maxYRotationAngle);
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                LMBClick?.Invoke();
+            }
         }
 
         private void ScanMovementInput()
