@@ -9,6 +9,7 @@ namespace Andremani.Pvp3DAction
     {
         [field: SerializeField] public PlayerInput Input { get; private set; }
         [field: SerializeField] public PlayerMovementController MovementController { get; private set; }
+        [field: SerializeField] public PlayersClashSystem ClashSystem { get; private set; }
 
         public override void OnStartLocalPlayer()
         {

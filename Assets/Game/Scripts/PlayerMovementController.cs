@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
 namespace Andremani.Pvp3DAction
 {
-    public class PlayerMovementController : MonoBehaviour
+    public class PlayerMovementController : NetworkBehaviour
     {
         [SerializeField] private Transform playerOrientationTransform;
         [SerializeField] private Rigidbody playerRigidbody;
@@ -17,6 +18,8 @@ namespace Andremani.Pvp3DAction
 
         private PlayerInput input;
         private bool isDashReloading;
+
+        [field: SyncVar] public bool IsDashing { get; private set; }
 
         private void Awake()
         {
@@ -91,12 +94,14 @@ namespace Andremani.Pvp3DAction
                     }
             }
             playerRigidbody.velocity = new Vector3(moveVector.x, playerRigidbody.velocity.y, moveVector.z);
+            IsDashing = true;
             enabled = false;
             input.isMouseXRotationLocked = true;
 
             float dashTime = dashDistance / dashSpeed;
             yield return new WaitForSeconds(dashTime);
 
+            IsDashing = false;
             enabled = true;
             input.isMouseXRotationLocked = false;
             isDashReloading = true;
