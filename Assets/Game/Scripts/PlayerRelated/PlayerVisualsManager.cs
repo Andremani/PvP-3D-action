@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Andremani.Pvp3DAction
+namespace Andremani.Pvp3DAction.PlayerRelated
 {
     public class PlayerVisualsManager : MonoBehaviour
     {

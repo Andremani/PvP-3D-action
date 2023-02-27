@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using Mirror;
+using Andremani.Pvp3DAction.Enums;
 
-namespace Andremani.Pvp3DAction
+namespace Andremani.Pvp3DAction.PlayerRelated
 {
     public class PlayersClashSystem : NetworkBehaviour
     {

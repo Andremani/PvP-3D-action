@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-namespace Andremani.Pvp3DAction
+namespace Andremani.Pvp3DAction.PlayerRelated
 {
     public class PlayersClashDetector : MonoBehaviour
     {

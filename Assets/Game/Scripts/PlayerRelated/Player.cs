@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 
-namespace Andremani.Pvp3DAction
+namespace Andremani.Pvp3DAction.PlayerRelated
 {
     public class Player : NetworkBehaviour
     {
@@ -16,7 +16,7 @@ namespace Andremani.Pvp3DAction
         public override void OnStartLocalPlayer()
         {
             Camera mainCamera = Camera.main;
-            PlayerCameraController cameraController = mainCamera?.GetComponent<PlayerCameraController>();
+            ThirdPersonViewCameraController cameraController = mainCamera?.GetComponent<ThirdPersonViewCameraController>();
 
             if (cameraController != null)
             {

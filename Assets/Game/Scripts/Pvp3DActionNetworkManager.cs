@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
 using Andremani.Pvp3DAction.UI;
+using Andremani.Pvp3DAction.PlayerRelated;
 
 namespace Andremani.Pvp3DAction
 {
-    public class CustomNetworkManager : NetworkManager
+    public class Pvp3DActionNetworkManager : NetworkManager
     {
         [Header("Custom Settings")]
         [Tooltip("Has effect only when 'Random' player spawn method chosen")]

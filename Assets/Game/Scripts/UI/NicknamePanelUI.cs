@@ -13,8 +13,8 @@ namespace Andremani.Pvp3DAction.UI
 
         private void Start()
         {
-            CustomNetworkManager.OnClientDisconnectEvent += OnDisconnectedFromServer;
-            CustomNetworkManager.OnClientConnectEvent += OnConnectedToServer;
+            Pvp3DActionNetworkManager.OnClientDisconnectEvent += OnDisconnectedFromServer;
+            Pvp3DActionNetworkManager.OnClientConnectEvent += OnConnectedToServer;
         }
 
         private void OnConnectedToServer()

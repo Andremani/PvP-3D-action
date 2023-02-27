@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Andremani.Pvp3DAction.PlayerRelated;
 
 namespace Andremani.Pvp3DAction
 {
@@ -23,8 +24,8 @@ namespace Andremani.Pvp3DAction
         {
             base.Awake();
 
-            CustomNetworkManager.OnServerAddPlayerEvent += OnServerPlayerAdded;
-            CustomNetworkManager.OnServerDisconnectEvent += OnServerPlayerDisconnected;
+            Pvp3DActionNetworkManager.OnServerAddPlayerEvent += OnServerPlayerAdded;
+            Pvp3DActionNetworkManager.OnServerDisconnectEvent += OnServerPlayerDisconnected;
 
             PlayersClashSystem.DashCrushServerEvent += OnDashCrush;
         }
@@ -75,7 +76,7 @@ namespace Andremani.Pvp3DAction
 
             ResetScore();
 
-            CustomNetworkManager networkManagerInstance = (CustomNetworkManager)CustomNetworkManager.singleton;
+            Pvp3DActionNetworkManager networkManagerInstance = (Pvp3DActionNetworkManager)Pvp3DActionNetworkManager.singleton;
             networkManagerInstance.RespawnPlayers();
         }
 

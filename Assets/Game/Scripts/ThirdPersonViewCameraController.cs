@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Andremani.Pvp3DAction.PlayerRelated;
 
 namespace Andremani.Pvp3DAction
 {
-    public class PlayerCameraController : MonoBehaviour
+    public class ThirdPersonViewCameraController : MonoBehaviour
     {
         [SerializeField] private Transform cameraRootTransform;
 
@@ -14,7 +15,7 @@ namespace Andremani.Pvp3DAction
         private void Awake()
         {
             enabled = false;
-            CustomNetworkManager.OnClientDisconnectEvent += OnDisconnectedFromServer;
+            Pvp3DActionNetworkManager.OnClientDisconnectEvent += OnDisconnectedFromServer;
         }
 
         public void Init(PlayerInput playerInput, Transform playerTransform)

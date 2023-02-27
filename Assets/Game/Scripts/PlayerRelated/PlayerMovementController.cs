@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Mirror;
+using Andremani.Pvp3DAction.Enums;
 
-namespace Andremani.Pvp3DAction
+namespace Andremani.Pvp3DAction.PlayerRelated
 {
     public class PlayerMovementController : NetworkBehaviour
     {

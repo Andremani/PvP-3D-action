@@ -18,8 +18,8 @@ namespace Andremani.Pvp3DAction.UI
             }
             gameObject.SetActive(false);
 
-            CustomNetworkManager.OnClientConnectEvent += OnClientConnect;
-            CustomNetworkManager.OnClientDisconnectEvent += OnClientDisconnect;
+            Pvp3DActionNetworkManager.OnClientConnectEvent += OnClientConnect;
+            Pvp3DActionNetworkManager.OnClientDisconnectEvent += OnClientDisconnect;
 
             GameManager.I.OnPlayerAddedToScoreCount += AddPlayerToLeaderboard;
             GameManager.I.OnPlayerExcludedFromScoreCount += RemovePlayerFromLeaderboard;
