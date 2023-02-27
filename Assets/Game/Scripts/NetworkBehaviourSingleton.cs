@@ -11,12 +11,12 @@ namespace Andremani.Pvp3DAction
         {
             get
             {
-#if UNITY_EDITOR
+//#if UNITY_EDITOR
                 if (!Application.isPlaying && !Exists)
                 {
                     instance = FindObjectOfType<T>();
                 }
-#endif
+//#endif
                 return instance;
             }
         }

@@ -310,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winningPlayerNicknameText: {fileID: 792840919}
+  gameManager: {fileID: 482554038}
   showDuration: 4.5
 --- !u!1 &157656094
 GameObject:
@@ -1005,6 +1006,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4128271543816459077, guid: 1d75c9edce3a381419294210a888d80f, type: 3}
   m_PrefabInstance: {fileID: 1443226458}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &482554038 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7710317999907214512, guid: 74ae06ad7fc448c4c9905cf2b04572f8, type: 3}
+  m_PrefabInstance: {fileID: 1408011664}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493ab183d7df8594abc0edcd924a7b75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &609701169 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4128271543816459077, guid: 1d75c9edce3a381419294210a888d80f, type: 3}
@@ -2814,6 +2826,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listParentTransform: {fileID: 1968664705}
   playerScoreUIPrefab: {fileID: 8922603288119901367, guid: e1210debd5d50454f8f8aad9cfc2ef44, type: 3}
+  gameManager: {fileID: 482554038}
 --- !u!1 &2095310462
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,12 +8,13 @@ namespace Andremani.Pvp3DAction.UI
     public class WinPanelUI : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI winningPlayerNicknameText;
+        [SerializeField] private GameManager gameManager;
         [SerializeField] private float showDuration = 4.5f;
 
         private void Start()
         {
             gameObject.SetActive(false);
-            GameManager.I.OnWin += ShowWinner;
+            gameManager.OnWin += ShowWinner;
         }
 
         public void ShowWinner(string nickname)

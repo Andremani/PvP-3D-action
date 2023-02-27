@@ -13,6 +13,7 @@ namespace Andremani.Pvp3DAction
         [SerializeField] private float resetGameAfterWinTimer = 5f;
 
         public readonly SyncDictionary<string, int> playerScores = new SyncDictionary<string, int>();
+        private bool gamePendingReset;
 
         public event System.Action<string, int> OnPlayerAddedToScoreCount;
         public event System.Action<string> OnPlayerExcludedFromScoreCount;
@@ -62,7 +63,7 @@ namespace Andremani.Pvp3DAction
             RpcOnScoreUpdated(player.Nickname, playerScores[player.Nickname]);
             //Debug.Log("+"+amount+" point(s) for " + player.gameObject.name + "! Current points: " + playerScores[player]);
 
-            if(playerScores[player.Nickname] >= winningScore)
+            if(playerScores[player.Nickname] >= winningScore && gamePendingReset == false)
             {
                 RpcOnWin(player.Nickname);
                 StartCoroutine(ResetGame(resetGameAfterWinTimer));
@@ -72,12 +73,14 @@ namespace Andremani.Pvp3DAction
         [ServerCallback]
         private IEnumerator ResetGame(float resetTime)
         {
+            gamePendingReset = true;
             yield return new WaitForSeconds(resetTime);
 
             ResetScore();
 
             Pvp3DActionNetworkManager networkManagerInstance = (Pvp3DActionNetworkManager)Pvp3DActionNetworkManager.singleton;
             networkManagerInstance.RespawnPlayers();
+            gamePendingReset = false;
         }
 
         [ServerCallback]

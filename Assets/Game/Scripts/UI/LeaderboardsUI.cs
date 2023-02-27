@@ -8,6 +8,7 @@ namespace Andremani.Pvp3DAction.UI
     {
         [SerializeField] Transform listParentTransform;
         [SerializeField] PlayerScoreUI playerScoreUIPrefab;
+        [SerializeField] GameManager gameManager;
         private Dictionary<string, PlayerScoreUI> playerScores = new Dictionary<string, PlayerScoreUI>();
 
         private void Start()
@@ -21,10 +22,10 @@ namespace Andremani.Pvp3DAction.UI
             Pvp3DActionNetworkManager.OnClientConnectEvent += OnClientConnect;
             Pvp3DActionNetworkManager.OnClientDisconnectEvent += OnClientDisconnect;
 
-            GameManager.I.OnPlayerAddedToScoreCount += AddPlayerToLeaderboard;
-            GameManager.I.OnPlayerExcludedFromScoreCount += RemovePlayerFromLeaderboard;
-            GameManager.I.OnScoreUpdated += UpdateScore;
-            GameManager.I.OnResetScore += ResetScore;
+            gameManager.OnPlayerAddedToScoreCount += AddPlayerToLeaderboard;
+            gameManager.OnPlayerExcludedFromScoreCount += RemovePlayerFromLeaderboard;
+            gameManager.OnScoreUpdated += UpdateScore;
+            gameManager.OnResetScore += ResetScore;
         }
 
         private void ResetScore()
