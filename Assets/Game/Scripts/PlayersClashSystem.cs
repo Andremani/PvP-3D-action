@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using Mirror;
 
 namespace Andremani.Pvp3DAction
@@ -15,6 +16,8 @@ namespace Andremani.Pvp3DAction
         [SerializeField] private float invulnurabilityDuration;
 
         [SyncVar(hook = nameof(OnInvulnerabilityStateChanged))] private bool isInvulnerable;
+
+        public static event Action<Player, Player> DashCrushServerEvent;
 
         private void OnValidate()
         {
@@ -73,7 +76,7 @@ namespace Andremani.Pvp3DAction
         private void OnSuccessfulDashCrush(Player winner, Player loser)
         {
             OnPlayerGetDamaged(loser);
-            AddScore(winner, 1);
+            DashCrushServerEvent?.Invoke(winner, loser);
         }
 
         [ServerCallback]
@@ -81,12 +84,6 @@ namespace Andremani.Pvp3DAction
         {
             damagedPlayer.ClashSystem.isInvulnerable = true;
             //hook of 'isInvulnerable' triggered
-        }
-
-        [ServerCallback]
-        private void AddScore(Player player, int amount)
-        {
-            Debug.Log("+1 point for " + player.gameObject.name + "!");
         }
 
         private void OnInvulnerabilityStateChanged(bool oldValue, bool newValue)

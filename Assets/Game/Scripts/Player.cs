@@ -11,6 +11,8 @@ namespace Andremani.Pvp3DAction
         [field: SerializeField] public PlayerMovementController MovementController { get; private set; }
         [field: SerializeField] public PlayersClashSystem ClashSystem { get; private set; }
 
+        [HideInInspector] public string Nickname { get; set; }
+
         public override void OnStartLocalPlayer()
         {
             Camera mainCamera = Camera.main;
